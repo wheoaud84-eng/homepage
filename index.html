@@ -1,1 +1,592 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>1학년 1반 작은 갤러리</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind 설정 (파스텔톤 색상 확장) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              mint: {
+                50: "#E7FAF5",
+                100: "#C9F2E6",
+                200: "#9EE8D3",
+              },
+              peach: {
+                50: "#FFF3EA",
+                100: "#FFDCC2",
+              },
+              skysoft: {
+                50: "#ECF5FF",
+                100: "#D6E9FF",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- 귀여운 한글 폰트 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Gowun Dodum", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+      .title-font {
+        font-family: "Jua", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      /* 살짝 둥실둥실 뜨는 애니메이션 */
+      @keyframes float-soft {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .float-soft {
+        animation: float-soft 6s ease-in-out infinite;
+      }
+
+      /* 갤러리 액자 느낌 */
+      .frame-shadow {
+        box-shadow: 0 14px 28px rgba(148, 163, 184, 0.3),
+          0 10px 10px rgba(148, 163, 184, 0.22);
+      }
+    </style>
+  </head>
+
+  <body class="bg-gradient-to-b from-skysoft-50 via-mint-50 to-peach-50 text-slate-800">
+    <div class="min-h-screen flex flex-col">
+      <!-- 상단 네비게이션 -->
+      <header
+        class="sticky top-0 z-20 bg-skysoft-50/80 backdrop-blur border-b border-skysoft-100"
+      >
+        <div
+          class="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex items-center justify-between"
+        >
+          <div class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 rounded-2xl bg-gradient-to-tr from-mint-200 to-peach-100 flex items-center justify-center text-sm title-font"
+            >
+              1-1
+            </div>
+            <span class="title-font text-lg sm:text-xl">
+              1학년 1반 작은 갤러리
+            </span>
+          </div>
+          <nav class="hidden sm:flex gap-4 text-sm text-slate-600">
+            <a href="#hero" class="hover:text-slate-900 transition">홈</a>
+            <a href="#about" class="hover:text-slate-900 transition">우리 반 소개</a>
+            <a href="#gallery" class="hover:text-slate-900 transition">작품 갤러리</a>
+            <a href="#contact" class="hover:text-slate-900 transition">문의</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <!-- Hero 섹션 -->
+        <section id="hero" class="py-12 sm:py-16 lg:py-20">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6">
+            <div
+              class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-center"
+            >
+              <!-- 왼쪽: 텍스트 -->
+              <div class="space-y-6">
+                <p
+                  class="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-xs sm:text-sm text-slate-600 border border-slate-100"
+                >
+                  🌱 오늘도 자라는 1학년 1반
+                </p>
+                <h1
+                  class="title-font text-3xl sm:text-4xl lg:text-5xl leading-tight text-slate-900"
+                >
+                  1학년 1반<br />
+                  <span class="bg-gradient-to-r from-indigo-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
+                    작은 미술관
+                  </span>
+                  에<br class="hidden sm:block" />
+                  오신 걸 환영해요!
+                </h1>
+                <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  이 페이지는 1학년 1반 친구들이 학교에서 만든
+                  <span class="font-semibold">소중한 작품들</span>을 모은
+                  작은 온라인 전시관입니다.<br />
+                  사과나무처럼 하루하루 무럭무럭 자라는 우리 반 아이들의
+                  상상력을 함께 감상해 보세요.
+                </p>
+
+                <div class="flex flex-wrap gap-3 text-xs sm:text-sm">
+                  <span
+                    class="inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 border border-mint-100"
+                  >
+                    🎨 창의력 가득 그림 시간
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 border border-peach-100"
+                  >
+                    🌈 친구들과 함께 만드는 교실
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 border border-skysoft-100"
+                  >
+                    🍎 사과나무처럼 쑥쑥 자라는 마음
+                  </span>
+                </div>
+              </div>
+
+              <!-- 오른쪽: 대표 작품 이미지 -->
+              <div
+                class="relative float-soft max-w-md mx-auto w-full"
+                aria-label="1학년 1반 대표 작품 - 사과나무 그림"
+              >
+                <!-- 뒤쪽 파스텔 장식 원 -->
+                <div
+                  class="absolute -top-10 -left-6 w-32 h-32 rounded-full bg-mint-100/70 blur-xl"
+                ></div>
+                <div
+                  class="absolute -bottom-10 -right-6 w-32 h-32 rounded-full bg-peach-100/60 blur-xl"
+                ></div>
+
+                <!-- 사진 카드 -->
+                <div
+                  class="relative rounded-3xl bg-white/80 border border-skysoft-100 frame-shadow overflow-hidden"
+                >
+                  <div class="p-4 pb-2 flex items-center justify-between">
+                    <div class="space-y-0.5">
+                      <p class="text-xs uppercase tracking-wide text-slate-500">
+                        대표 작품
+                      </p>
+                      <p class="title-font text-lg text-slate-900">
+                        햇살 아래 사과나무
+                      </p>
+                    </div>
+                    <span
+                      class="inline-flex items-center rounded-full bg-mint-50 px-3 py-1 text-xs text-emerald-700 border border-emerald-100"
+                    >
+                      🍏 1학년 1반 작품
+                    </span>
+                  </div>
+                  <div class="px-4 pb-4">
+                    <div
+                      class="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-100"
+                    >
+                      <img
+                        src="사과나무.jpg"
+                        alt="1학년 1반 학생이 그린 사과나무 그림"
+                        class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                    </div>
+                    <p
+                      class="mt-3 text-xs sm:text-sm text-slate-600 leading-snug"
+                    >
+                      활짝 열린 초록 잎 사이로 빨간 사과가 주렁주렁 매달린
+                      <span class="font-medium">「햇살 아래 사과나무」</span
+                      >는, 우리 반 친구들이 서로를 응원해 주는 모습을 닮아
+                      있어요.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- About 섹션 -->
+        <section id="about" class="py-12 sm:py-16 bg-white/70">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6">
+            <div
+              class="rounded-3xl border border-skysoft-100 bg-skysoft-50/70 px-5 sm:px-8 py-8 sm:py-10"
+            >
+              <div
+                class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-10"
+              >
+                <div class="flex-1 space-y-3">
+                  <h2
+                    class="title-font text-2xl sm:text-3xl text-slate-900 flex items-center gap-2"
+                  >
+                    우리 반 친구 소개
+                    <span class="text-xl">👧🧒</span>
+                  </h2>
+                  <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+                    1학년 1반 친구들은 매일 아침
+                    <span class="font-semibold">“안녕!”</span> 하는 인사와 함께
+                    즐겁게 하루를 시작합니다. 수업 시간에는 서로의 아이디어를
+                    존중하고, 놀이 시간에는 함께 웃으면서
+                    <span class="font-semibold">행복한 교실</span>을 만들어 가고
+                    있어요.
+                  </p>
+                  <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+                    아직은 연필 잡는 손도, 가위질하는 손도 조금 서툴 수 있지만,
+                    마음만큼은 누구보다 따뜻하고 단단합니다. 우리 반 친구들의
+                    이름 하나하나가, 이 작은 미술관의 반짝이는 별이 되어 주고
+                    있습니다.
+                  </p>
+                </div>
+
+                <!-- 학생 이름 리스트 -->
+                <div
+                  class="flex-1 rounded-2xl bg-white/90 border border-slate-100 p-5 sm:p-6"
+                >
+                  <div class="flex items-center justify-between mb-3">
+                    <p class="text-sm font-semibold text-slate-800">
+                      1학년 1반 친구들
+                    </p>
+                    <span
+                      class="inline-flex items-center rounded-full bg-mint-50 px-3 py-1 text-[11px] text-emerald-700 border border-mint-100"
+                    >
+                      오늘도 즐겁게 생활 중 💫
+                    </span>
+                  </div>
+                  <div
+                    class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2 text-xs sm:text-sm text-slate-700"
+                  >
+                    <span>김가은</span>
+                    <span>김도현</span>
+                    <span>박서준</span>
+                    <span>박소은</span>
+                    <span>이민재</span>
+                    <span>이서연</span>
+                    <span>정하늘</span>
+                    <span>최지호</span>
+                    <span>한별</span>
+                  </div>
+                  <p
+                    class="mt-4 text-xs sm:text-sm text-slate-600 leading-relaxed"
+                  >
+                    우리 1학년 1반 친구들은
+                    <span class="font-medium">서로를 칭찬해 주고 도와주며</span>
+                    지냅니다. 웃음이 끊이지 않는 교실에서 매일 새로운 꿈을
+                    키우고 있어요.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Gallery 섹션 -->
+        <section id="gallery" class="py-12 sm:py-16 lg:py-20">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6">
+            <div class="mb-8 sm:mb-10 text-center space-y-3">
+              <h2 class="title-font text-2xl sm:text-3xl text-slate-900">
+                작품 갤러리
+              </h2>
+              <p class="text-sm sm:text-base text-slate-700">
+                예쁜 벽면에 걸린 액자처럼, 우리 반 학생들의 작품을 감상해 보세요.
+              </p>
+            </div>
+
+            <!-- 벽면 느낌 배경 -->
+            <div
+              class="rounded-[2rem] border border-peach-100 bg-gradient-to-b from-peach-50/80 via-white to-mint-50/70 px-4 sm:px-6 py-8 sm:py-10 relative overflow-hidden"
+            >
+              <!-- 은은한 원 장식 -->
+              <div
+                class="pointer-events-none absolute -top-10 left-10 w-28 h-28 rounded-full bg-mint-100/50 blur-xl"
+              ></div>
+              <div
+                class="pointer-events-none absolute -bottom-12 right-10 w-32 h-32 rounded-full bg-skysoft-100/70 blur-xl"
+              ></div>
+
+              <div class="relative grid gap-6 sm:gap-7 md:grid-cols-3">
+                <!-- 카드 1 -->
+                <article
+                  class="group rounded-3xl bg-white/90 border border-slate-100 frame-shadow overflow-hidden flex flex-col"
+                >
+                  <div class="p-3 pb-2 flex items-center justify-between">
+                    <span
+                      class="inline-flex text-[11px] rounded-full bg-mint-50 px-2.5 py-1 text-emerald-700 border border-mint-100"
+                    >
+                      작품 01
+                    </span>
+                    <span class="text-[11px] text-slate-500">
+                      by 김가은
+                    </span>
+                  </div>
+                  <div class="px-3">
+                    <div
+                      class="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-100"
+                    >
+                      <img
+                        src="12.jpg"
+                        alt="무지개가 떠 있는 학교 풍경 그림"
+                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div class="pt-3 pb-4">
+                      <p class="title-font text-sm sm:text-base text-slate-900">
+                        무지개가 반짝이는 학교
+                      </p>
+                      <p
+                        class="mt-1 text-xs sm:text-sm text-slate-600 leading-snug"
+                      >
+                        비 온 뒤 뜬 무지개처럼, 우리 반 교실에도 항상
+                        <span class="font-medium">다양한 색깔의 웃음</span>이
+                        가득하다는 마음을 담았어요.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 카드 2 -->
+                <article
+                  class="group rounded-3xl bg-white/90 border border-slate-100 frame-shadow overflow-hidden flex flex-col"
+                >
+                  <div class="p-3 pb-2 flex items-center justify-between">
+                    <span
+                      class="inline-flex text-[11px] rounded-full bg-skysoft-50 px-2.5 py-1 text-sky-700 border border-skysoft-100"
+                    >
+                      작품 02
+                    </span>
+                    <span class="text-[11px] text-slate-500">
+                      by 이민재
+                    </span>
+                  </div>
+                  <div class="px-3">
+                    <div
+                      class="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-100"
+                    >
+                      <img
+                        src="13.jpg"
+                        alt="친구들이 손을 잡고 있는 그림"
+                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div class="pt-3 pb-4">
+                      <p class="title-font text-sm sm:text-base text-slate-900">
+                        손을 잡고 걷는 길
+                      </p>
+                      <p
+                        class="mt-1 text-xs sm:text-sm text-slate-600 leading-snug"
+                      >
+                        함께 손을 잡고 걸어가면 어떤 길도
+                        <span class="font-medium">무섭지 않고 즐겁다</span>는
+                        우리 반 친구들의 마음을 담은 그림이에요.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 카드 3 -->
+                <article
+                  class="group rounded-3xl bg-white/90 border border-slate-100 frame-shadow overflow-hidden flex flex-col"
+                >
+                  <div class="p-3 pb-2 flex items-center justify-between">
+                    <span
+                      class="inline-flex text-[11px] rounded-full bg-peach-50 px-2.5 py-1 text-orange-700 border border-peach-100"
+                    >
+                      작품 03
+                    </span>
+                    <span class="text-[11px] text-slate-500">
+                      by 박서준
+                    </span>
+                  </div>
+                  <div class="px-3">
+                    <div
+                      class="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-100"
+                    >
+                      <img
+                        src="14.jpg"
+                        alt="밤하늘의 별을 표현한 그림"
+                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div class="pt-3 pb-4">
+                      <p class="title-font text-sm sm:text-base text-slate-900">
+                        별이 쏟아지는 밤
+                      </p>
+                      <p
+                        class="mt-1 text-xs sm:text-sm text-slate-600 leading-snug"
+                      >
+                        학교가 끝난 밤에도, 우리 반 친구들의
+                        <span class="font-medium">꿈과 상상력</span>은 별빛처럼
+                        반짝이고 있어요.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 카드 4 -->
+                <article
+                  class="group rounded-3xl bg-white/90 border border-slate-100 frame-shadow overflow-hidden flex flex-col"
+                >
+                  <div class="p-3 pb-2 flex items-center justify-between">
+                    <span
+                      class="inline-flex text-[11px] rounded-full bg-mint-50 px-2.5 py-1 text-emerald-700 border border-mint-100"
+                    >
+                      작품 04
+                    </span>
+                    <span class="text-[11px] text-slate-500">
+                      by 이서연
+                    </span>
+                  </div>
+                  <div class="px-3">
+                    <div
+                      class="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-100"
+                    >
+                      <img
+                        src="15.jpg"
+                        alt="꽃밭과 나비가 있는 그림"
+                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div class="pt-3 pb-4">
+                      <p class="title-font text-sm sm:text-base text-slate-900">
+                        나비가 쉬어 가는 꽃길
+                      </p>
+                      <p
+                        class="mt-1 text-xs sm:text-sm text-slate-600 leading-snug"
+                      >
+                        꽃 한 송이, 나비 한 마리에도
+                        <span class="font-medium">친구들을 떠올리는 마음</span>이
+                        담겨 있는 따뜻한 작품이에요.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 카드 5 -->
+                <article
+                  class="group rounded-3xl bg-white/90 border border-slate-100 frame-shadow overflow-hidden flex flex-col"
+                >
+                  <div class="p-3 pb-2 flex items-center justify-between">
+                    <span
+                      class="inline-flex text-[11px] rounded-full bg-skysoft-50 px-2.5 py-1 text-sky-700 border border-skysoft-100"
+                    >
+                      작품 05
+                    </span>
+                    <span class="text-[11px] text-slate-500">
+                      by 정하늘
+                    </span>
+                  </div>
+                  <div class="px-3">
+                    <div
+                      class="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-100"
+                    >
+                      <img
+                        src="16.jpg"
+                        alt="바다와 섬을 표현한 그림"
+                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div class="pt-3 pb-4">
+                      <p class="title-font text-sm sm:text-base text-slate-900">
+                        파도 위에 떠 있는 꿈
+                      </p>
+                      <p
+                        class="mt-1 text-xs sm:text-sm text-slate-600 leading-snug"
+                      >
+                        출렁이는 파도처럼 조금은 흔들려도, 우리 반 아이들의
+                        <span class="font-medium">꿈은 언제나 앞으로 나아간다</span
+                        >는 메시지를 담았어요.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 카드 6: 사과나무 다시 활용 (비워두기 아까우면) -->
+                <article
+                  class="group rounded-3xl bg-white/90 border border-slate-100 frame-shadow overflow-hidden flex flex-col"
+                >
+                  <div class="p-3 pb-2 flex items-center justify-between">
+                    <span
+                      class="inline-flex text-[11px] rounded-full bg-peach-50 px-2.5 py-1 text-orange-700 border border-peach-100"
+                    >
+                      대표 작품
+                    </span>
+                    <span class="text-[11px] text-slate-500">
+                      by 1학년 1반
+                    </span>
+                  </div>
+                  <div class="px-3">
+                    <div
+                      class="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-100"
+                    >
+                      <img
+                        src="사과나무.jpg"
+                        alt="사과나무 그림"
+                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div class="pt-3 pb-4">
+                      <p class="title-font text-sm sm:text-base text-slate-900">
+                        우리 교실의 사과나무
+                      </p>
+                      <p
+                        class="mt-1 text-xs sm:text-sm text-slate-600 leading-snug"
+                      >
+                        이 사과나무는 1학년 1반 교실을 상징하는
+                        <span class="font-medium">우리만의 상징 나무</span>예요.
+                        사과 하나마다 아이들의 꿈과 소원을 담았습니다.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact 섹션 -->
+        <section id="contact" class="py-12 sm:py-16 bg-white/80">
+          <div class="mx-auto max-w-4xl px-4 sm:px-6">
+            <div
+              class="rounded-3xl border border-mint-100 bg-mint-50/70 px-5 sm:px-8 py-8 sm:py-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-10"
+            >
+              <div class="flex-1 space-y-3">
+                <h2 class="title-font text-2xl text-slate-900 flex items-center gap-2">
+                  문의하기
+                  <span>📩</span>
+                </h2>
+                <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  1학년 1반 수업 운영, 학생 작품 전시, AI·에듀테크를 활용한 수업,
+                  그리고 학급 운영과 관련한
+                  <span class="font-semibold">강의·연수·컨설팅 문의는 이메일로 연락
+                    주세요.</span>
+                </p>
+              </div>
+
+              <div class="flex-1 flex md:justify-end">
+                <a
+                  href="mailto:wheoaud84@gmail.com"
+                  class="inline-flex items-center justify-center rounded-full px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-sky-400 via-teal-400 to-emerald-400 shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5"
+                >
+                  <span class="mr-2">📨</span>
+                  <span>wheoaud84@gmail.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-slate-100 bg-skysoft-50/80">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 py-4 sm:py-5 text-center">
+          <p class="text-xs sm:text-sm text-slate-600">
+            Designed for Future Education / © 2025 Bogil Elementary School. All
+            Rights Reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
 
